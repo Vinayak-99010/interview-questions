@@ -1,14 +1,14 @@
 1. Deployment Strategies 
 ans - 
-| Strategy        | Downtime | Rollback | Complexity | Cost    |
-| --------------- | -------- | -------- | ---------- | ------- |
-| Recreate        | High     | Manual   | Low        | Low     |
-| Rolling         | Low      | Hard     | Medium     | Medium  |
-| Blue-Green      | None     | Easy     | Medium     | High    |
-| Canary          | None     | Easy     | High       | Medium  |
-| A/B Testing     | None     | Hard     | High       | Medium  |
-| Shadow          | None     | N/A      | High       | High    |
-| Feature Toggles | None     | Easy     | High       | Low-Med |
+| Strategy           | Description                                                         | Pros ✅                                 | Cons ❌                                         |
+| ------------------ | ------------------------------------------------------------------- | -------------------------------------- | ---------------------------------------------- |
+| **Recreate**       | Stops the old version, then starts the new one                      | Simple, minimal setup                  | Downtime                                       |
+| **Rolling Update** | Gradually replaces old instances with new ones                      | No downtime, smooth transition         | Harder rollback                                |
+| **Blue-Green**     | Two environments (blue & green); switch traffic to green when ready | Zero downtime, easy rollback           | Requires double infrastructure                 |
+| **Canary**         | New version is released to a small % of users first                 | Risk mitigation, real-world test       | Complex traffic control & monitoring           |
+| **A/B Testing**    | Route traffic to different app versions to test features or UX      | Data-driven testing, user feedback     | Needs feature flags and analysis framework     |
+| **Shadow**         | Traffic is copied (not routed) to new version silently              | No user impact, great for load testing | Needs duplication logic, can be resource-heavy |
+
 
 2. What is artifact Repo?
 Ans - An Artifact Repository is a centralized storage location where compiled code (also called artifacts) like .jar, .war, .zip, .tar.gz, .deb, .rpm, Docker images, and more are stored and managed for use in deployments.
