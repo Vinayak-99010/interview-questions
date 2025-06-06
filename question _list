@@ -129,4 +129,51 @@ High CPU or suspicious activity
 | **Failure Recovery**   | Requires special handling (e.g., persistent storage)   | Easier recovery (can redeploy without losing data) |
 | **Kubernetes Storage** | Needs **persistent volume (PVC)**                      | Doesn't need persistent storage                    |
 
+8. docker image vs container
+
+| 🔍 Feature      | 🧊 **Docker Image**                                              | 📦 **Docker Container**                                     |
+| --------------- | ---------------------------------------------------------------- | ----------------------------------------------------------- |
+| **Definition**  | A **read-only** template with instructions to create a container | A **runtime instance** of a Docker image                    |
+| **State**       | **Static** and immutable                                         | **Dynamic** and mutable (can be started, stopped, deleted)  |
+| **Usage**       | Used to create containers                                        | Actual running application based on an image                |
+| **Storage**     | Stored in image registries (like DockerHub, ECR, etc.)           | Runs in Docker engine with its own writable layer           |
+| **Persistence** | Doesn’t change once built                                        | Can write data, logs, and files during execution            |
+| **Example**     | `python:3.10`, `nginx:latest`, `ubuntu:20.04`                    | A running `nginx` web server container using `nginx:latest` |
+
+9. 🧾 Scripted vs Declarative Jenkins Pipelines
+
+| Feature                | 🧑‍💻 **Scripted Pipeline**          | 📘 **Declarative Pipeline**                                 |
+| ---------------------- | ------------------------------------ | ----------------------------------------------------------- |
+| **Syntax Style**       | Based on **Groovy scripting**        | Uses a more **structured, YAML-like syntax**                |
+| **Flexibility**        | Highly flexible and powerful         | Simpler, more readable, but less flexible                   |
+| **Ease of Use**        | Requires **Groovy knowledge**        | Beginner-friendly and easy to learn                         |
+| **Structure**          | No strict structure — free-form code | Follows a strict structure (`pipeline {}` block required)   |
+| **Error Handling**     | Manual try-catch required            | Has built-in `post` blocks (success, failure, always, etc.) |
+| **Parallel Execution** | More complex to implement            | Easier to implement with `parallel` block                   |
+| **Best For**           | Advanced/custom pipelines            | Most common CI/CD workflows                                 |
+| **Example Keyword**    | `node`, `stage`, `echo`              | `pipeline`, `stages`, `steps`, `environment`                |
+
+10. ✅ Code Quality vs Code Coverage
+
+| Feature                                  | **Code Quality**                                                        | **Code Coverage**                                          |
+| ---------------------------------------- | ----------------------------------------------------------------------- | ---------------------------------------------------------- |
+| **Definition**                           | Measure of how well code adheres to **best practices**                  | Measure of how much of the code is **executed by tests**   |
+| **Focus**                                | Code structure, maintainability, readability, security                  | Test effectiveness and code tested                         |
+| **Evaluates**                            | Naming, complexity, duplication, style, security issues                 | What % of lines, branches, or functions are tested         |
+| **Tool Examples**                        | SonarQube, ESLint, Pylint, PMD                                          | Jacoco, Istanbul, Cobertura, Coverage.py                   |
+| **Output**                               | Quality score, issue list, code smells, technical debt                  | Coverage % (e.g., 80% of lines covered)                    |
+| **Importance**                           | Helps prevent bugs and improve maintainability                          | Ensures tests are comprehensive and reduce blind spots     |
+| **Can you have high without the other?** | Yes. You can have high coverage with poor-quality code, and vice versa. | Yes. You might test everything, but still write messy code |
+
+| Concept           | Analogy                                                       |
+| ----------------- | ------------------------------------------------------------- |
+| **Code Quality**  | Writing a clean, grammatically correct essay                  |
+| **Code Coverage** | Proofreading the essay to make sure every sentence is checked |
+
+11. How to run a yaml manifest without a yaml manifest file created.
+You can run a YAML manifest without creating a physical .yaml file by using kubectl apply -f - and piping the YAML content directly into it via standard input (stdin).
+
+12. What is default quality gate in sonar
+The default quality gate in SonarQube is called Sonar way. It blocks promotion of code if new issues like bugs, vulnerabilities, or poor coverage are introduced. 
+It’s a key tool for enforcing continuous code quality in CI/CD pipelines.”
 
