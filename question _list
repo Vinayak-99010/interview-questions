@@ -176,4 +176,18 @@ You can run a YAML manifest without creating a physical .yaml file by using kube
 12. What is default quality gate in sonar
 The default quality gate in SonarQube is called Sonar way. It blocks promotion of code if new issues like bugs, vulnerabilities, or poor coverage are introduced. 
 It’s a key tool for enforcing continuous code quality in CI/CD pipelines.”
+13. Explain pipeline and its tools 
+CI/CD stands for:
+Continuous Integration:Automatically building and testing code when changes are pushed.
+Continuous Delivery/Deployment: Automatically delivering or deploying tested code to production or staging environments.
+
+| Stage                    | Purpose                              | Common Tools                       |
+| ------------------------ | ------------------------------------ | ---------------------------------- |
+| **1. Source Control**    | Store and manage code                | Git, GitHub, GitLab, Bitbucket     |
+| **2. CI - Build & Test** | Compile, run unit tests, package app | Jenkins, GitHub Actions, GitLab CI |
+| **3. Artifact Storage**  | Store build artifacts (images/files) | Nexus, Artifactory, DockerHub, ECR |
+| **4. CD - Deploy**       | Deploy to test/staging/production    | Jenkins, ArgoCD, Spinnaker, Helm   |
+| **5. Monitoring**        | Track app performance & errors       | Prometheus, Grafana, ELK, Datadog  |
+| **6. Security**          | Scan code & images                   | SonarQube, Trivy, Snyk, Checkmarx  |
+
 
