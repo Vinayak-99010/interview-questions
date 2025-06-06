@@ -32,3 +32,101 @@ Ans - An Artifact Repository is a centralized storage location where compiled co
 | **Deploy**  | Role-based access, infra-as-code hardening      |
 | **Operate** | Logging, monitoring, patch management, MFA      |
 
+5 ✅ What is SonarQube?
+SonarQube is an open-source platform used to continuously inspect the quality of code. It helps detect bugs, vulnerabilities, code smells, and technical debt in your source code.
+🔍 Key Features:
+| Feature                    | Description                                                       |
+| -------------------------- | ----------------------------------------------------------------- |
+| **Static Code Analysis**   | Analyzes source code without executing it                         |
+| **Multi-language Support** | Supports Java, Python, JavaScript, C#, Go, etc.                   |
+| **Quality Gates**          | Define rules (e.g., "no new critical bugs") to pass/fail builds   |
+| **Security Scanning**      | Finds vulnerabilities and insecure coding patterns                |
+| **Integration**            | Works with Jenkins, GitHub Actions, Azure DevOps, GitLab CI, etc. |
+| **Reports**                | Dashboards showing test coverage, duplication, complexity, etc.   |
+
+🎯 Why It's Important in DevOps:
+Ensures clean code before deployment
+Detects issues early in the CI/CD pipeline
+Improves maintainability and security
+Helps enforce coding standards
+
+How did you secure your infrastructure in DevOps?
+
+✅ Security Measures I Used in DevOps Infrastructure
+🔐 1. IAM & Access Control
+Used principle of least privilege for all IAM roles and users
+Enabled MFA (Multi-Factor Authentication) for all users
+Created separate roles for CI/CD tools with restricted permissions
+Used temporary access tokens (e.g., IAM roles in EC2, STS in AWS)
+
+🔐 2. Secrets Management
+Stored secrets in tools like:
+AWS Secrets Manager
+Vault by HashiCorp
+Kubernetes Secrets
+Avoided hardcoding secrets in code or pipelines
+Rotated secrets and tokens periodically
+
+🔐 3. Network Security
+Used VPCs with private/public subnet separation
+Deployed NACLs and Security Groups to restrict inbound/outbound traffic
+Enabled bastion hosts for SSH into private instances
+Restricted access to ports (e.g., only expose 22, 443, 80 as needed)
+
+🔐 4. Data Security
+Enabled encryption at rest and in transit using:
+AWS KMS
+SSL/TLS for web and DB connections
+Encrypted S3 buckets, RDS, and EBS volumes
+
+🔐 5. CI/CD Pipeline Security
+Restricted who can trigger pipelines
+Scanned code using:
+SonarQube for code quality
+Trivy, Grype, or AquaSec for container scans
+Checkov or tfsec for IaC security
+Used signed Git commits and protected branches
+
+🔐 6. Container & Kubernetes Security
+Used non-root users in Dockerfiles
+Scanned container images before pushing to registry
+Enabled RBAC in Kubernetes
+Used network policies to control pod communication
+Enabled audit logging in Kubernetes
+
+🔐 7. Monitoring & Alerts
+Integrated Prometheus/Grafana, CloudWatch, and ELK/EFK stack
+Set up alerts for:
+Unauthorized access
+Security group changes
+High CPU or suspicious activity
+
+
+6. what is the difference between monolithic architecture and microservices
+
+| Feature                 | **Monolithic Architecture**                                           | **Microservices Architecture**                                 |
+| ----------------------- | --------------------------------------------------------------------- | -------------------------------------------------------------- |
+| **Definition**          | A single unified application where all components are tightly coupled | An application broken into small, independent services         |
+| **Deployment**          | Deployed as one unit (WAR/JAR/EXE)                                    | Each service is deployed independently                         |
+| **Codebase**            | One large codebase                                                    | Multiple smaller codebases per service                         |
+| **Scaling**             | Scales as a whole — even if only one part needs it                    | Scales individual services independently                       |
+| **Technology Stack**    | Usually uses a single tech stack                                      | Each service can use different languages or technologies       |
+| **Failure Impact**      | One failure can bring down the entire application                     | Failure is isolated to the specific microservice               |
+| **Development Speed**   | Slower for larger teams due to shared codebase                        | Faster as teams work on independent services                   |
+| **Testing & Debugging** | Easier initially; harder as app grows                                 | Requires more effort (e.g., distributed tracing)               |
+| **CI/CD Pipelines**     | One pipeline for the entire app                                       | Separate CI/CD pipelines per microservice                      |
+| **Ideal For**           | Small to medium applications                                          | Large, complex, or evolving applications requiring scalability |
+
+
+7. what is statefull and stateless applications ?
+
+| Feature                | **Stateful Application**                               | **Stateless Application**                          |
+| ---------------------- | ------------------------------------------------------ | -------------------------------------------------- |
+| **Definition**         | Stores client/session data between requests            | Does **not** store session info between requests   |
+| **Session Handling**   | Remembers previous interactions                        | Each request is independent                        |
+| **Examples**           | Databases, chat apps, file storage services            | Web APIs, authentication services, load balancers  |
+| **Scalability**        | Harder to scale (must preserve state across instances) | Easier to scale (no dependency on prior state)     |
+| **Failure Recovery**   | Requires special handling (e.g., persistent storage)   | Easier recovery (can redeploy without losing data) |
+| **Kubernetes Storage** | Needs **persistent volume (PVC)**                      | Doesn't need persistent storage                    |
+
+
