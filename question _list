@@ -191,3 +191,29 @@ Continuous Delivery/Deployment: Automatically delivering or deploying tested cod
 | **6. Security**          | Scan code & images                   | SonarQube, Trivy, Snyk, Checkmarx  |
 
 
+14. EC2 experiences high traffic spikes only during business hours.. how would you optimize cost and performance
+“I’d configure Auto Scaling to manage traffic spikes, use scheduled Lambda to stop instances after hours, and choose cost-effective EC2 types like t3.medium. 
+For predictable usage, I’d consider Savings Plans or Reserved Instances.”
+
+15. what if the ec2 crashes suddenly. explain troubleshooting steps
+“I’d start by checking instance and system status in the EC2 console, analyze CloudWatch metrics and logs, and inspect system logs for kernel or disk issues. 
+If needed, I’d stop the instance, attach the volume elsewhere, repair, and reattach.
+I’d also configure alerts and automation to prevent future crashes.”
+
+16. app is deployed on ec2 instance. the APP has to fetch images from internet but its not able what might be the possible issues
+
+First, I’d verify if the EC2 instance actually has internet access. If it’s in a public subnet, I’d check that it has a public or Elastic IP attached, and that the route table points to an Internet Gateway.
+If it's in a private subnet, then I’d check if there's a NAT Gateway configured to allow outbound traffic.
+
+17. how to restore deleted data from s3
+"If versioning is enabled, I can restore by retrieving an older version or removing the delete marker. If it’s in Glacier, I initiate a restore. If replication is set up, I recover from the replica bucket. 
+Without any of these, recovery depends on backups or external logs like CloudTrail."
+
+18. how to connect on prem DC to AWS 
+"To connect an on-premises data center to AWS, there are multiple options depending on the use case, bandwidth, and security requirements. 
+The most common methods are AWS Site-to-Site VPN, AWS Direct Connect, and sometimes a Transit Gateway setup. Here's how I approach it:"
+
+19. Q: How do you establish communication between two EC2 instances in two different VPCs?
+
+"To enable communication between EC2 instances in two different VPCs, the most common and secure method is VPC Peering, but options vary depending on the requirements. Here's how I'd approach it:"
+"To enable communication between EC2s in different VPCs, I use VPC peering or Transit Gateway depending on scale, and then update route tables and security groups accordingly."
