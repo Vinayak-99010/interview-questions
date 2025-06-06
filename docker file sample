@@ -1,0 +1,42 @@
+docker file sample
+
+  Here’s a sample Dockerfile that sets up a basic Apache web server on Ubuntu:
+
+# Use official Ubuntu base image
+FROM ubuntu:20.04
+
+# Set environment variable to avoid interactive prompts
+ENV DEBIAN_FRONTEND=noninteractive
+
+# Update packages and install Apache
+RUN apt-get update && \
+    apt-get install -y apache2 && \
+    apt-get clean
+
+# Copy custom index.html (optional)
+COPY index.html /var/www/html/index.html
+
+# Expose port 80
+EXPOSE 80
+
+# Start Apache in foreground
+CMD ["apachectl", "-D", "FOREGROUND"]
+===========================================
+📄 Optional: index.html
+<!-- index.html -->
+<!DOCTYPE html>
+<html>
+  <head><title>Hello from Docker</title></head>
+  <body>
+    <h1>Apache is running inside a Docker container!</h1>
+  </body>
+</html>
+===========================================
+▶️ Build and Run the Docker Image
+# Build the image
+docker build -t my-apache-image .
+
+# Run a container from the image
+docker run -d -p 8080:80 --name my-apache-container my-apache-image
+===========================================
+Now open your browser and go to: http://localhost:8080
