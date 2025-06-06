@@ -1,0 +1,47 @@
+Anisible sample file
+
+Here’s a sample Ansible playbook file that installs Apache HTTP server on a Linux system (e.g., Ubuntu or CentOS), starts the service, and ensures it's enabled on boot.
+
+---
+- name: Install and start Apache web server
+  hosts: webservers
+  become: true   # Run with sudo/root privileges
+
+  tasks:
+    - name: Install Apache (Ubuntu)
+      apt:
+        name: apache2
+        state: present
+      when: ansible_os_family == "Debian"
+
+    - name: Install Apache (CentOS)
+      yum:
+        name: httpd
+        state: present
+      when: ansible_os_family == "RedHat"
+
+    - name: Start Apache service
+      service:
+        name: "{{ 'apache2' if ansible_os_family == 'Debian' else 'httpd' }}"
+        state: started
+        enabled: true
+==============================================
+📁 Directory Structure
+
+ansible-project/
+├── inventory.ini
+├── install_apache.yml
+
+==============================================
+📄 Sample Inventory File: inventory.ini
+[webservers]
+192.168.1.10
+192.168.1.11
+
+==============================================
+▶️ Run the Playbook
+ansible-playbook -i inventory.ini install_apache.yml
+
+
+
+
