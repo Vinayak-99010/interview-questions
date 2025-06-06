@@ -1,0 +1,34 @@
+1. Deployment Strategies 
+ans - 
+| Strategy        | Downtime | Rollback | Complexity | Cost    |
+| --------------- | -------- | -------- | ---------- | ------- |
+| Recreate        | High     | Manual   | Low        | Low     |
+| Rolling         | Low      | Hard     | Medium     | Medium  |
+| Blue-Green      | None     | Easy     | Medium     | High    |
+| Canary          | None     | Easy     | High       | Medium  |
+| A/B Testing     | None     | Hard     | High       | Medium  |
+| Shadow          | None     | N/A      | High       | High    |
+| Feature Toggles | None     | Easy     | High       | Low-Med |
+
+2. What is artifact Repo?
+Ans - An Artifact Repository is a centralized storage location where compiled code (also called artifacts) like .jar, .war, .zip, .tar.gz, .deb, .rpm, Docker images, and more are stored and managed for use in deployments.
+
+3. How will you trace back to the source code when all team members are changed ?
+✅ 1. Check the Git Repository (Version Control System)
+✅ 2. Look at Branching and Tagging
+✅ 3. Review CI/CD Pipelines
+✅ 4. Trace Artifacts to Commits
+✅ 5. Use Ticketing System Integration
+✅ 6. Explore Infrastructure as Code & Docs
+✅ 7. Audit Logs & Access Logs
+✅ 8. Reverse Engineer if Needed
+4. Secuirty Measures taken in devops 
+| Stage       | Security Practices                              |
+| ----------- | ----------------------------------------------- |
+| **Code**    | Linting, SAST, secret scanning                  |
+| **Build**   | Dependency scanning, artifact signing           |
+| **Test**    | DAST, container scanning, test coverage reports |
+| **Release** | Signed artifacts, change approvals              |
+| **Deploy**  | Role-based access, infra-as-code hardening      |
+| **Operate** | Logging, monitoring, patch management, MFA      |
+
